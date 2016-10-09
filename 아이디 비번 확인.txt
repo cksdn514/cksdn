@@ -1,0 +1,60 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+int id(char *id, char *d)				// 정해놓은 아이디와 입력받은 아이디가 같은가 확인하는 함수
+{
+	for(int a=0; id[a] != '\0'; a++)	// 정해놓은 아이디 문자열의 끝까지
+	{
+		if(id[a] != d[a])				// 문자열 비교후 같으면 return 0, 다르면 return 1
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int pa(char *pa, char *s)				// 정해놓은 패스워드와 입력받은 패스워드가 같은가 확인하는 함수
+{
+	for(int b=0; pa[b] != '\0'; b++)	// 정해놓은 패스워드 문자열의 끝까지
+	{
+		if(pa[b] != s[b])				// 문자열 비교후 같으면 return 0, 다르면 return 1
+		{
+			return 1;	
+		}
+	}
+	return 0;
+}
+int main()
+{
+	char ID[24]={'K','i','m'};					// ID 지정
+	char PA[24]={'1','2','3','4'};				// 패스워드 지정
+
+	char i[24];									// ID 치기 변수
+	char p[24];									// 비번 치기 변수
+
+	cout << "ID를 입력하세요 : ";
+	cin.getline(i,24);							// getline 함수를 사용하여  char 입력받기
+	cout << "패스워드를 입력하세요 : ";
+	cin.getline(p,24);
+
+	if(id(ID,i) == 0 && pa(PA,p)== 0)			// 아이디 패스워드 함수의 return 값에 따른 출력
+		{
+			cout << "-> ID,패스워드가 일치합니다.";
+		}
+	if(id(ID,i) == 1 && pa(PA,p)== 0)			
+		{
+			cout << "-> ID가 일치하지 않습니다.";
+		}
+	if(id(ID,i) == 0 && pa(PA,p)==1)
+		{
+			cout << "-> 패스워드가 일치하지 않습니다.";
+		}
+	if(id(ID,i) == 1 && pa(PA,p)==1)
+	{
+		cout << "-> ID,패스워드가 일치하지 않습니다.";
+	}
+
+	return 0;
+}
